@@ -1,0 +1,18 @@
+{
+  "preprocess_component.yaml": {
+    "implementation.container.command": ["python3", "code/cifar10_pre_process.py"],
+    "implementation.container.image": "public.ecr.aws/f2t6q8t2/kubeflow_aws_p310-pt21_cpu:tasks"
+  },
+  "train_component.yaml": {
+    "implementation.container.command": ["python3", "code/cifar10_pytorch.py"],
+    "implementation.container.image": "public.ecr.aws/f2t6q8t2/kubeflow_aws_p310-pt21_cpu:tasks"
+  },
+  "deploy_component.yaml": {
+    "implementation.container.image": "public.ecr.aws/f2t6q8t2/kubeflow_aws_p310-pt21_cpu:serve"
+  },
+  "minio_component.yaml": {
+    "implementation.container.command": ["python3", "utils/upload_to_minio.py"],
+    "implementation.container.image": "public.ecr.aws/f2t6q8t2/kubeflow_aws_p310-pt21_cpu:tasks"
+  }
+
+}
